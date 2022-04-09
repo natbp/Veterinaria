@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="CapaPresentacion.exe" version="1.0.0.0" publicKeyToken="05f4336f4529cf88" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="CapaPresentacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="CapaPresentacion.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opciones del manifiesto de Control de cuentas de usuario
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
+          nodo requestedExecutionLevel por alguno de los siguientes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si desea usar la virtualización de archivos y del Registro para la
+         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CapaPresentacion.exe" size="569312">
+      <assemblyIdentity name="CapaPresentacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Gn5nxJK4Su6brEzH5Inj5V2PIXi2eAARm2yDTK/uK/o=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="CapaPresentacion.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-QCJJPDJ\ander" issuerKeyHash="518ef40752c1e9f85b0b3006b835a2ca2755cbdc" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>00hBqKvndEvrizJ7nr18wmLXiKhRx2qXiUdFECOvtf4=</DigestValue></Reference></SignedInfo><SignatureValue>mbA7XNYO9pWKXVaXpOXaoNaXO/f3PcIfVQxsKk37yHYFkF26qwOdK/txyjiAqjdAosZDQRGRVozGqT2BnH01zL3ASMqXqWL7slo/ij0vxEK8NHZ6vMOza0yh6wOcJPnwIKykdUiy7FSQ1YGzz9O88zx/Z8aFmFzOn/SCtN/17SE=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>5asdSC8KivtgKf+lEutGwAEHzeZzqvTqWed+Ur2Nuq3qeZ4htgTrF2Q5BkoDT2mR+OXdypX5gFOge0am/RfsnEtUyvTCQq7Lcy56SningGgCE0kpvRv5F3Q5U/t1iJFncMOteh2yWxWf8Il+slrPzUbuzRnNKmtKyqrR2nIqI1k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="feb5af2310454789976ac751a888d762c27cbd9e7b328beb4b74e7aba84148d3" Description="" Url=""><as:assemblyIdentity name="CapaPresentacion.exe" version="1.0.0.0" publicKeyToken="05f4336f4529cf88" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-QCJJPDJ\ander</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>n16JZhHqLeIH3ZUfsSV+os12BvJa1sadIc/BH4mttVg=</DigestValue></Reference></SignedInfo><SignatureValue>W/lFtDI671tX+ReTRZLRnQhcbCKORSXT2Yk2/7B+M6HCrsyGMc21bdI8PMHeE1E1Fs5fnn0Crp9PschwSuRhxqEuwDy7O3Y26/tExSF5PielfeLsjKl5CszbyVaa8FdNoVvXvmmP3G9nZXQ13VgPk5gsoZMNYyTc9LNrLwsu0ww=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>5asdSC8KivtgKf+lEutGwAEHzeZzqvTqWed+Ur2Nuq3qeZ4htgTrF2Q5BkoDT2mR+OXdypX5gFOge0am/RfsnEtUyvTCQq7Lcy56SningGgCE0kpvRv5F3Q5U/t1iJFncMOteh2yWxWf8Il+slrPzUbuzRnNKmtKyqrR2nIqI1k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQOEL4ViiPa4NFuCWPxaU45zANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFEAQwBKAEoAUABEAEoAXABhAG4AZABlAHIwHhcNMjIwNDA2MDM0OTI2WhcNMjMwNDA2MDk0OTI2WjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFEAQwBKAEoAUABEAEoAXABhAG4AZABlAHIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOWrHUgvCor7YCn/pRLrRsABB83mc6r06lnnflK9jbqt6nmeIbYE6xdkOQZKA09pkfjl3cqV+YBToHtGpv0X7JxLVMr0wkKuy3Muekp4p4BoAhNJKb0b+Rd0OVP7dYiRZ3DDrXodslsVn/CJfrJaz81G7s0ZzSprSsqq0dpyKiNZAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAewDTwT1fSYA9EzH7pI6IpvAEPSxcSEKqRrKaA7fmiME4mDo0NjJfC4+upVLNE+qOkCpY5+rLOJqUkUhbprA/7FrB9dAzOhQHh1uyNQ+a64xaN+jO0N6aRlY3xkYZFdtVbdCXAOQKjl4u15mhWL6o0FNxHDayDmlzD+fN/BFdHNc=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

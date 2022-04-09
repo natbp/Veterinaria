@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="veterinariaModelStoreContainer" CdmEntityContainer="veterinariaEntities">
+    <EntitySetMapping Name="administracion">
+      <EntityTypeMapping TypeName="veterinariaModel.administracion">
+        <MappingFragment StoreEntitySet="administracion">
+          <ScalarProperty Name="fk_vacuna" ColumnName="fk_vacuna" />
+          <ScalarProperty Name="fk_mascota" ColumnName="fk_mascota" />
+          <ScalarProperty Name="fk_veterinario" ColumnName="fk_veterinario" />
+          <ScalarProperty Name="telefono_admi" ColumnName="telefono_admi" />
+          <ScalarProperty Name="direccion_admi" ColumnName="direccion_admi" />
+          <ScalarProperty Name="contrasena_admi" ColumnName="contrasena_admi" />
+          <ScalarProperty Name="nombre_admi" ColumnName="nombre_admi" />
+          <ScalarProperty Name="id_admi" ColumnName="id_admi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="veterinariaModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="contrasena_cli" ColumnName="contrasena_cli" />
+          <ScalarProperty Name="telefono_cli" ColumnName="telefono_cli" />
+          <ScalarProperty Name="correo_cli" ColumnName="correo_cli" />
+          <ScalarProperty Name="direccion_cli" ColumnName="direccion_cli" />
+          <ScalarProperty Name="nombre_usuc" ColumnName="nombre_usuc" />
+          <ScalarProperty Name="nombre_cli" ColumnName="nombre_cli" />
+          <ScalarProperty Name="cedula_cli" ColumnName="cedula_cli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mascotas">
+      <EntityTypeMapping TypeName="veterinariaModel.mascotas">
+        <MappingFragment StoreEntitySet="mascotas">
+          <ScalarProperty Name="fk_vacuna" ColumnName="fk_vacuna" />
+          <ScalarProperty Name="fk_cliente" ColumnName="fk_cliente" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="edad_mascota" ColumnName="edad_mascota" />
+          <ScalarProperty Name="nombre_mascota" ColumnName="nombre_mascota" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacunas">
+      <EntityTypeMapping TypeName="veterinariaModel.vacunas">
+        <MappingFragment StoreEntitySet="vacunas">
+          <ScalarProperty Name="importe" ColumnName="importe" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="nombre_vacu" ColumnName="nombre_vacu" />
+          <ScalarProperty Name="id_vacu" ColumnName="id_vacu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veterinarios">
+      <EntityTypeMapping TypeName="veterinariaModel.veterinarios">
+        <MappingFragment StoreEntitySet="veterinarios">
+          <ScalarProperty Name="contrasena_vet" ColumnName="contrasena_vet" />
+          <ScalarProperty Name="eps" ColumnName="eps" />
+          <ScalarProperty Name="telefono_vet" ColumnName="telefono_vet" />
+          <ScalarProperty Name="correo_vet" ColumnName="correo_vet" />
+          <ScalarProperty Name="direccion_vet" ColumnName="direccion_vet" />
+          <ScalarProperty Name="edad_vet" ColumnName="edad_vet" />
+          <ScalarProperty Name="nombre_usuv" ColumnName="nombre_usuv" />
+          <ScalarProperty Name="nombre_vet" ColumnName="nombre_vet" />
+          <ScalarProperty Name="cedula_vet" ColumnName="cedula_vet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

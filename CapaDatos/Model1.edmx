@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="veterinariaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="administracion">
+          <Key>
+            <PropertyRef Name="id_admi" />
+          </Key>
+          <Property Name="id_admi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_admi" Type="varchar" MaxLength="255" />
+          <Property Name="contrasena_admi" Type="varchar" MaxLength="255" />
+          <Property Name="direccion_admi" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_admi" Type="int" />
+          <Property Name="fk_veterinario" Type="int" />
+          <Property Name="fk_mascota" Type="int" />
+          <Property Name="fk_vacuna" Type="int" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="cedula_cli" />
+          </Key>
+          <Property Name="cedula_cli" Type="int" Nullable="false" />
+          <Property Name="nombre_cli" Type="varchar" MaxLength="255" />
+          <Property Name="nombre_usuc" Type="varchar" MaxLength="255" />
+          <Property Name="direccion_cli" Type="varchar" MaxLength="255" />
+          <Property Name="correo_cli" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_cli" Type="int" />
+          <Property Name="contrasena_cli" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="mascotas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_mascota" Type="varchar" MaxLength="255" />
+          <Property Name="edad_mascota" Type="int" />
+          <Property Name="raza" Type="varchar" MaxLength="255" />
+          <Property Name="peso" Type="int" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="fk_cliente" Type="int" />
+          <Property Name="fk_vacuna" Type="int" />
+        </EntityType>
+        <EntityType Name="vacunas">
+          <Key>
+            <PropertyRef Name="id_vacu" />
+          </Key>
+          <Property Name="id_vacu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_vacu" Type="varchar" MaxLength="255" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="valor" Type="int" />
+          <Property Name="importe" Type="int" />
+        </EntityType>
+        <EntityType Name="veterinarios">
+          <Key>
+            <PropertyRef Name="cedula_vet" />
+          </Key>
+          <Property Name="cedula_vet" Type="int" Nullable="false" />
+          <Property Name="nombre_vet" Type="varchar" MaxLength="255" />
+          <Property Name="nombre_usuv" Type="varchar" MaxLength="255" />
+          <Property Name="edad_vet" Type="int" />
+          <Property Name="direccion_vet" Type="varchar" MaxLength="255" />
+          <Property Name="correo_vet" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_vet" Type="int" />
+          <Property Name="eps" Type="varchar" MaxLength="255" />
+          <Property Name="contrasena_vet" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__administr__fk_ma__30C33EC3">
+          <End Role="mascotas" Type="Self.mascotas" Multiplicity="0..1" />
+          <End Role="administracion" Type="Self.administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mascotas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_mascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__fk_va__31B762FC">
+          <End Role="vacunas" Type="Self.vacunas" Multiplicity="0..1" />
+          <End Role="administracion" Type="Self.administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacunas">
+              <PropertyRef Name="id_vacu" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__fk_ve__2FCF1A8A">
+          <End Role="veterinarios" Type="Self.veterinarios" Multiplicity="0..1" />
+          <End Role="administracion" Type="Self.administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="veterinarios">
+              <PropertyRef Name="cedula_vet" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_veterinario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mascotas__fk_cli__2BFE89A6">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="0..1" />
+          <End Role="mascotas" Type="Self.mascotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cedula_cli" />
+            </Principal>
+            <Dependent Role="mascotas">
+              <PropertyRef Name="fk_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mascotas__fk_vac__2CF2ADDF">
+          <End Role="vacunas" Type="Self.vacunas" Multiplicity="0..1" />
+          <End Role="mascotas" Type="Self.mascotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacunas">
+              <PropertyRef Name="id_vacu" />
+            </Principal>
+            <Dependent Role="mascotas">
+              <PropertyRef Name="fk_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="veterinariaModelStoreContainer">
+          <EntitySet Name="administracion" EntityType="Self.administracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mascotas" EntityType="Self.mascotas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacunas" EntityType="Self.vacunas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="veterinarios" EntityType="Self.veterinarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__administr__fk_ma__30C33EC3" Association="Self.FK__administr__fk_ma__30C33EC3">
+            <End Role="mascotas" EntitySet="mascotas" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__fk_va__31B762FC" Association="Self.FK__administr__fk_va__31B762FC">
+            <End Role="vacunas" EntitySet="vacunas" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__fk_ve__2FCF1A8A" Association="Self.FK__administr__fk_ve__2FCF1A8A">
+            <End Role="veterinarios" EntitySet="veterinarios" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mascotas__fk_cli__2BFE89A6" Association="Self.FK__mascotas__fk_cli__2BFE89A6">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="mascotas" EntitySet="mascotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mascotas__fk_vac__2CF2ADDF" Association="Self.FK__mascotas__fk_vac__2CF2ADDF">
+            <End Role="vacunas" EntitySet="vacunas" />
+            <End Role="mascotas" EntitySet="mascotas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veterinariaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="veterinariaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="administracion" EntityType="veterinariaModel.administracion" />
+          <EntitySet Name="clientes" EntityType="veterinariaModel.clientes" />
+          <EntitySet Name="mascotas" EntityType="veterinariaModel.mascotas" />
+          <EntitySet Name="vacunas" EntityType="veterinariaModel.vacunas" />
+          <EntitySet Name="veterinarios" EntityType="veterinariaModel.veterinarios" />
+          <AssociationSet Name="FK__administr__fk_ma__1BC821DD" Association="veterinariaModel.FK__administr__fk_ma__1BC821DD">
+            <End Role="mascotas" EntitySet="mascotas" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__fk_va__1CBC4616" Association="veterinariaModel.FK__administr__fk_va__1CBC4616">
+            <End Role="vacunas" EntitySet="vacunas" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__administr__fk_ve__1AD3FDA4" Association="veterinariaModel.FK__administr__fk_ve__1AD3FDA4">
+            <End Role="veterinarios" EntitySet="veterinarios" />
+            <End Role="administracion" EntitySet="administracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mascotas__fk_cli__17036CC0" Association="veterinariaModel.FK__mascotas__fk_cli__17036CC0">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="mascotas" EntitySet="mascotas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mascotas__fk_vac__17F790F9" Association="veterinariaModel.FK__mascotas__fk_vac__17F790F9">
+            <End Role="vacunas" EntitySet="vacunas" />
+            <End Role="mascotas" EntitySet="mascotas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="administracion">
+          <Key>
+            <PropertyRef Name="id_admi" />
+          </Key>
+          <Property Name="id_admi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_admi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena_admi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_admi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_admi" Type="Int32" />
+          <Property Name="fk_veterinario" Type="Int32" />
+          <Property Name="fk_mascota" Type="Int32" />
+          <Property Name="fk_vacuna" Type="Int32" />
+          <NavigationProperty Name="mascotas" Relationship="veterinariaModel.FK__administr__fk_ma__1BC821DD" FromRole="administracion" ToRole="mascotas" />
+          <NavigationProperty Name="vacunas" Relationship="veterinariaModel.FK__administr__fk_va__1CBC4616" FromRole="administracion" ToRole="vacunas" />
+          <NavigationProperty Name="veterinarios" Relationship="veterinariaModel.FK__administr__fk_ve__1AD3FDA4" FromRole="administracion" ToRole="veterinarios" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="cedula_cli" />
+          </Key>
+          <Property Name="cedula_cli" Type="Int32" Nullable="false" />
+          <Property Name="nombre_cli" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_usuc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_cli" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="correo_cli" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_cli" Type="Int32" />
+          <Property Name="contrasena_cli" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="mascotas" Relationship="veterinariaModel.FK__mascotas__fk_cli__17036CC0" FromRole="clientes" ToRole="mascotas" />
+        </EntityType>
+        <EntityType Name="mascotas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_mascota" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="edad_mascota" Type="Int32" />
+          <Property Name="raza" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="peso" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fk_cliente" Type="Int32" />
+          <Property Name="fk_vacuna" Type="Int32" />
+          <NavigationProperty Name="administracion" Relationship="veterinariaModel.FK__administr__fk_ma__1BC821DD" FromRole="mascotas" ToRole="administracion" />
+          <NavigationProperty Name="clientes" Relationship="veterinariaModel.FK__mascotas__fk_cli__17036CC0" FromRole="mascotas" ToRole="clientes" />
+          <NavigationProperty Name="vacunas" Relationship="veterinariaModel.FK__mascotas__fk_vac__17F790F9" FromRole="mascotas" ToRole="vacunas" />
+        </EntityType>
+        <EntityType Name="vacunas">
+          <Key>
+            <PropertyRef Name="id_vacu" />
+          </Key>
+          <Property Name="id_vacu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_vacu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="valor" Type="Int32" />
+          <NavigationProperty Name="administracion" Relationship="veterinariaModel.FK__administr__fk_va__1CBC4616" FromRole="vacunas" ToRole="administracion" />
+          <NavigationProperty Name="mascotas" Relationship="veterinariaModel.FK__mascotas__fk_vac__17F790F9" FromRole="vacunas" ToRole="mascotas" />
+          <Property Name="importe" Type="Int32" />
+        </EntityType>
+        <EntityType Name="veterinarios">
+          <Key>
+            <PropertyRef Name="cedula_vet" />
+          </Key>
+          <Property Name="cedula_vet" Type="Int32" Nullable="false" />
+          <Property Name="nombre_vet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_usuv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="edad_vet" Type="Int32" />
+          <Property Name="direccion_vet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="correo_vet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_vet" Type="Int32" />
+          <Property Name="eps" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena_vet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="administracion" Relationship="veterinariaModel.FK__administr__fk_ve__1AD3FDA4" FromRole="veterinarios" ToRole="administracion" />
+        </EntityType>
+        <Association Name="FK__administr__fk_ma__1BC821DD">
+          <End Type="veterinariaModel.mascotas" Role="mascotas" Multiplicity="0..1" />
+          <End Type="veterinariaModel.administracion" Role="administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mascotas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_mascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__fk_va__1CBC4616">
+          <End Type="veterinariaModel.vacunas" Role="vacunas" Multiplicity="0..1" />
+          <End Type="veterinariaModel.administracion" Role="administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacunas">
+              <PropertyRef Name="id_vacu" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__administr__fk_ve__1AD3FDA4">
+          <End Type="veterinariaModel.veterinarios" Role="veterinarios" Multiplicity="0..1" />
+          <End Type="veterinariaModel.administracion" Role="administracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="veterinarios">
+              <PropertyRef Name="cedula_vet" />
+            </Principal>
+            <Dependent Role="administracion">
+              <PropertyRef Name="fk_veterinario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mascotas__fk_cli__17036CC0">
+          <End Type="veterinariaModel.clientes" Role="clientes" Multiplicity="0..1" />
+          <End Type="veterinariaModel.mascotas" Role="mascotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="cedula_cli" />
+            </Principal>
+            <Dependent Role="mascotas">
+              <PropertyRef Name="fk_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mascotas__fk_vac__17F790F9">
+          <End Type="veterinariaModel.vacunas" Role="vacunas" Multiplicity="0..1" />
+          <End Type="veterinariaModel.mascotas" Role="mascotas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacunas">
+              <PropertyRef Name="id_vacu" />
+            </Principal>
+            <Dependent Role="mascotas">
+              <PropertyRef Name="fk_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veterinariaModelStoreContainer" CdmEntityContainer="veterinariaEntities">
+          <EntitySetMapping Name="administracion">
+            <EntityTypeMapping TypeName="veterinariaModel.administracion">
+              <MappingFragment StoreEntitySet="administracion">
+                <ScalarProperty Name="fk_vacuna" ColumnName="fk_vacuna" />
+                <ScalarProperty Name="fk_mascota" ColumnName="fk_mascota" />
+                <ScalarProperty Name="fk_veterinario" ColumnName="fk_veterinario" />
+                <ScalarProperty Name="telefono_admi" ColumnName="telefono_admi" />
+                <ScalarProperty Name="direccion_admi" ColumnName="direccion_admi" />
+                <ScalarProperty Name="contrasena_admi" ColumnName="contrasena_admi" />
+                <ScalarProperty Name="nombre_admi" ColumnName="nombre_admi" />
+                <ScalarProperty Name="id_admi" ColumnName="id_admi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="veterinariaModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="contrasena_cli" ColumnName="contrasena_cli" />
+                <ScalarProperty Name="telefono_cli" ColumnName="telefono_cli" />
+                <ScalarProperty Name="correo_cli" ColumnName="correo_cli" />
+                <ScalarProperty Name="direccion_cli" ColumnName="direccion_cli" />
+                <ScalarProperty Name="nombre_usuc" ColumnName="nombre_usuc" />
+                <ScalarProperty Name="nombre_cli" ColumnName="nombre_cli" />
+                <ScalarProperty Name="cedula_cli" ColumnName="cedula_cli" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mascotas">
+            <EntityTypeMapping TypeName="veterinariaModel.mascotas">
+              <MappingFragment StoreEntitySet="mascotas">
+                <ScalarProperty Name="fk_vacuna" ColumnName="fk_vacuna" />
+                <ScalarProperty Name="fk_cliente" ColumnName="fk_cliente" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="raza" ColumnName="raza" />
+                <ScalarProperty Name="edad_mascota" ColumnName="edad_mascota" />
+                <ScalarProperty Name="nombre_mascota" ColumnName="nombre_mascota" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacunas">
+            <EntityTypeMapping TypeName="veterinariaModel.vacunas">
+              <MappingFragment StoreEntitySet="vacunas">
+                <ScalarProperty Name="importe" ColumnName="importe" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="nombre_vacu" ColumnName="nombre_vacu" />
+                <ScalarProperty Name="id_vacu" ColumnName="id_vacu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="veterinarios">
+            <EntityTypeMapping TypeName="veterinariaModel.veterinarios">
+              <MappingFragment StoreEntitySet="veterinarios">
+                <ScalarProperty Name="contrasena_vet" ColumnName="contrasena_vet" />
+                <ScalarProperty Name="eps" ColumnName="eps" />
+                <ScalarProperty Name="telefono_vet" ColumnName="telefono_vet" />
+                <ScalarProperty Name="correo_vet" ColumnName="correo_vet" />
+                <ScalarProperty Name="direccion_vet" ColumnName="direccion_vet" />
+                <ScalarProperty Name="edad_vet" ColumnName="edad_vet" />
+                <ScalarProperty Name="nombre_usuv" ColumnName="nombre_usuv" />
+                <ScalarProperty Name="nombre_vet" ColumnName="nombre_vet" />
+                <ScalarProperty Name="cedula_vet" ColumnName="cedula_vet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
